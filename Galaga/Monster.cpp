@@ -20,7 +20,7 @@ void Monster::Update()
 
 	if (0 == (GetPos().Y % 2))
 	{
-		if (Core->Screen.GetScreenX() == GetPos().X)
+		if ((Core->Screen.GetScreenX() - 1) == GetPos().X)
 		{
 			
 			for (; StartIter != EndIter; ++StartIter)
@@ -46,8 +46,9 @@ void Monster::Update()
 			for (; StartIter != EndIter; ++StartIter)
 			{
 				ConsoleObject* MonsterPos = *StartIter;
+				int PosY = GetPos().Y;
 
-				if (MonsterPos->GetPos().Y == GetPos().Y)
+				if (MonsterPos->GetPos().Y == PosY)
 				{
 					MonsterPos->AddPos(Down);
 				}

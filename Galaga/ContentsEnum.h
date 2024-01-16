@@ -13,10 +13,3 @@ enum class GalagaRenderType
     Bullet, 
     Player, 
 };
-
-enum class MarioObjectType
-{
-    Mario, // = 0
-    Monster, // = 1
-    Block, // = 1
-};
