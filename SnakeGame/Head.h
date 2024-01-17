@@ -12,5 +12,6 @@ private:
 	int PrevMove = 0;
 
 	void FollowFront();
+	void AllMove(int2 _Dir);
 };
 

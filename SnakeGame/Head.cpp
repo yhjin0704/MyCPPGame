@@ -23,54 +23,34 @@ void Head::Update()
 		{
 		case 'A':
 		case 'a':
-			if ('d' == PrevMove)
-			{
-			}
-			else
+			if ('d' != PrevMove)
 			{
 				PrevMove = 'a';
-				PrevPos = GetPos();
-				AddPos(Left);
-				FollowFront();
+				AllMove(Left);
 			}
 			break;
 		case 'S':
 		case 's':
-			if ('w' == PrevMove)
-			{
-			}
-			else
+			if ('w' != PrevMove)
 			{
 				PrevMove = 's';
-				PrevPos = GetPos();
-				AddPos(Down);
-				FollowFront();
+				AllMove(Down);
 			}
 			break;
 		case 'W':
 		case 'w':
-			if ('s' == PrevMove)
-			{
-			}
-			else
+			if ('s' != PrevMove)
 			{
 				PrevMove = 'w';
-				PrevPos = GetPos();
-				AddPos(Up);
-				FollowFront();
+				AllMove(Up);
 			}
 			break;
 		case 'D':
 		case 'd':
-			if ('a' == PrevMove)
-			{
-			}
-			else
+			if ('a' != PrevMove)
 			{
 				PrevMove = 'd';
-				PrevPos = GetPos();
-				AddPos(Right);
-				FollowFront();
+				AllMove(Right);
 			}
 			break;
 		case '1':
@@ -84,27 +64,19 @@ void Head::Update()
 	{
 		if ('a' == PrevMove)
 		{
-			PrevPos = GetPos();
-			AddPos(Left);
-			FollowFront();
+			AllMove(Left);
 		}
 		else if ('s' == PrevMove)
 		{
-			PrevPos = GetPos();
-			AddPos(Down);
-			FollowFront();
+			AllMove(Down);
 		}
 		else if ('w' == PrevMove)
 		{
-			PrevPos = GetPos();
-			AddPos(Up);
-			FollowFront();
+			AllMove(Up);
 		}
 		else if ('d' == PrevMove)
 		{
-			PrevPos = GetPos();
-			AddPos(Right);
-			FollowFront();
+			AllMove(Right);
 		}
 	}
 
@@ -189,4 +161,11 @@ void Head::FollowFront()
 		NextBody->SetPos((NextBody->GetFront())->GetPrevPos());
 		NextBody = NextBody->GetBack();
 	}
+}
+
+void Head::AllMove(int2 _Dir)
+{
+	PrevPos = GetPos();
+	AddPos(_Dir);
+	FollowFront();
 }
