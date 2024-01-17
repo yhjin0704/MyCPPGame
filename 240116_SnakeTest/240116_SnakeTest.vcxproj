@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{cd4cbd5a-1214-415f-85db-ac4875a53a39}</ProjectGuid>
-    <RootNamespace>SnakeGame</RootNamespace>
+    <ProjectGuid>{d6e7c5f9-24b2-4dde-9940-550c4ab4fbdc}</ProjectGuid>
+    <RootNamespace>My240116SnakeTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -143,12 +143,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="240116_SnakeTest.cpp" />
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="BodyManager.cpp" />
     <ClCompile Include="GlobalValue.cpp" />
     <ClCompile Include="Head.cpp" />
     <ClCompile Include="Part.cpp" />
-    <ClCompile Include="SnakeGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Body.h" />

@@ -140,7 +140,7 @@ void ConsoleScreen::ClearScreen()
 	{
 		for (int x = 0; x < ScreenX; x++)
 		{
-			ScreenData[y][x] = '*';
+			ScreenData[y][x] = '.';
 		}
 		ScreenData[y][ScreenX] = '\n';
 	}
