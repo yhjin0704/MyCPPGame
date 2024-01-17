@@ -10,5 +10,7 @@ protected:
 
 private:
 	int PrevMove = 0;
+
+	void FollowFront();
 };
 

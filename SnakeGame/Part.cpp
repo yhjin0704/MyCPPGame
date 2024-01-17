@@ -1,17 +1,6 @@
 #include "Part.h"
 
-// 앞 Part를 따라가는 함수
-void Part::FollowFront(Part* _Part)
-{
-	Part* NextBody = _Part->Back;
-	while (nullptr != NextBody)
-	{
-		NextBody->SetPrevPos(NextBody->GetPos());
-		NextBody->SetPos((NextBody->GetFront())->GetPrevPos());
-		NextBody = NextBody->Back;
-	}
-}
-
+//Body의 Back과 Front를 설정하고 좌표를 설정해주는 함수
 void Part::ConnectBody(Part* _Body)
 {
 	_Body->SetFront(this);

@@ -34,7 +34,6 @@ public:
 		PrevPos = _Pos;
 	}
 
-	void FollowFront(Part* _Part);
 	void ConnectBody(Part* _Body);
 
 protected:

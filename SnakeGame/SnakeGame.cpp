@@ -8,7 +8,7 @@
 int main()
 {
     EngineCore EngineCore;
-    EngineCore.Init({ 30, 30 });
+    EngineCore.Init({ 20, 10 });
 
     {
         GBodyManager = EngineCore.CreateManager<BodyManager>(0);

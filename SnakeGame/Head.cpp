@@ -19,11 +19,6 @@ void Head::Update()
 
 		int Select = _getch();
 
-		// InputCount = _kbhit();
-
-		// X Y
-		// 1 0
-
 		switch (Select)
 		{
 		case 'A':
@@ -36,7 +31,7 @@ void Head::Update()
 				PrevMove = 'a';
 				PrevPos = GetPos();
 				AddPos(Left);
-				FollowFront(this);
+				FollowFront();
 			}
 			break;
 		case 'S':
@@ -49,7 +44,7 @@ void Head::Update()
 				PrevMove = 's';
 				PrevPos = GetPos();
 				AddPos(Down);
-				FollowFront(this);
+				FollowFront();
 			}
 			break;
 		case 'W':
@@ -62,7 +57,7 @@ void Head::Update()
 				PrevMove = 'w';
 				PrevPos = GetPos();
 				AddPos(Up);
-				FollowFront(this);
+				FollowFront();
 			}
 			break;
 		case 'D':
@@ -75,7 +70,7 @@ void Head::Update()
 				PrevMove = 'd';
 				PrevPos = GetPos();
 				AddPos(Right);
-				FollowFront(this);
+				FollowFront();
 			}
 			break;
 		case '1':
@@ -85,30 +80,32 @@ void Head::Update()
 			break;
 		}
 	}
-
-	if ('a' == PrevMove)
+	else 
 	{
-		PrevPos = GetPos();
-		AddPos(Left);
-		FollowFront(this);
-	}
-	else if ('s' == PrevMove)
-	{
-		PrevPos = GetPos();
-		AddPos(Down);
-		FollowFront(this);
-	}
-	else if ('w' == PrevMove)
-	{
-		PrevPos = GetPos();
-		AddPos(Up);
-		FollowFront(this);
-	}
-	else if ('d' == PrevMove)
-	{
-		PrevPos = GetPos();
-		AddPos(Right);
-		FollowFront(this);
+		if ('a' == PrevMove)
+		{
+			PrevPos = GetPos();
+			AddPos(Left);
+			FollowFront();
+		}
+		else if ('s' == PrevMove)
+		{
+			PrevPos = GetPos();
+			AddPos(Down);
+			FollowFront();
+		}
+		else if ('w' == PrevMove)
+		{
+			PrevPos = GetPos();
+			AddPos(Up);
+			FollowFront();
+		}
+		else if ('d' == PrevMove)
+		{
+			PrevPos = GetPos();
+			AddPos(Right);
+			FollowFront();
+		}
 	}
 
 	if (nullptr == BodyManager::GetCurBody())
@@ -132,7 +129,7 @@ void Head::Update()
 			printf_s("Game Over");
 			GetCore()->EngineEnd();
 		}
-		else if (0 >= HeadPos.Y)
+		else if (0 > HeadPos.Y)
 		{
 			printf_s("Game Over");
 			GetCore()->EngineEnd();
@@ -180,4 +177,16 @@ void Head::Update()
 		}
 	}
 	return;
+}
+
+// 앞 Part를 따라가는 함수
+void Head::FollowFront()
+{
+	Part* NextBody = GetBack();
+	while (nullptr != NextBody)
+	{
+		NextBody->SetPrevPos(NextBody->GetPos());
+		NextBody->SetPos((NextBody->GetFront())->GetPrevPos());
+		NextBody = NextBody->GetBack();
+	}
 }
